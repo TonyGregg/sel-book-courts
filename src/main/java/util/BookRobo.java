@@ -24,40 +24,29 @@ public class BookRobo {
     } catch (AWTException e) {
       e.printStackTrace();
     }
+    assert bookRobo != null;
     bookRobo.bookCourt();
   }
 
-  /**
-   *
-   * @return 1 if it is successful, 0 otherwise.
-   */
-  public int changeDurationDateAndFromTime() {
-    select120Minutes();
-    typeDate();
-    selectFromTime();
 
-    return 1;
-  }
 
   private  void bookCourt() {robot.setAutoDelay(40);
     robot.setAutoWaitForIdle(true);
 
     openBrowser();
     typeUrl();
-
     typeUserNameAndPassword();
 
     clickReserveLink();
+
     select120Minutes();
     typeDate();
-
     selectFromTime();
 
     doSearch();
     select545Time();
 
     confirmCourt();
-
     clickOkay();
 
     System.exit(0);
@@ -100,13 +89,14 @@ public class BookRobo {
     type(KeyEvent.VK_TAB);
     type(KeyEvent.VK_DOWN);
     type(KeyEvent.VK_ENTER);
+
     robot.delay(200);
     type(KeyEvent.VK_ENTER);
 
   }
 
   private void clickReserveLink () {
-    robot.delay(6000); // wait for few seconds for login.
+    robot.delay(4500); // wait for few seconds for login.
     robot.mouseMove(110, 400);
     robot.delay(100);
     leftClick();
@@ -115,14 +105,14 @@ public class BookRobo {
 
   private void select120Minutes() {
     robot.delay(2500); // wait for few seconds for the page to load
-    robot.mouseMove(756, 646);
+    robot.mouseMove(752, 709); // original y 646
     robot.delay(100);
     leftClick();
   }
 
   private void typeDate() {
     robot.delay(500); // wait for few seconds for the page to load
-    robot.mouseMove(360, 646);
+    robot.mouseMove(360, 709);
     robot.delay(100);
     leftClick();
 
@@ -132,7 +122,8 @@ public class BookRobo {
     robot.keyRelease(KeyEvent.VK_META);
     robot.delay(500);
     LocalDate today = LocalDate.now();
-    LocalDate twoWeeksFromNowDate = today.plusDays(14); //TODO change it back to 14 days
+    //TODO it should be always 14 days. To avoid real booking, change it to 14 + 1 or 2 days.
+    LocalDate twoWeeksFromNowDate = today.plusDays(14);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     String desiredDateStr = twoWeeksFromNowDate.format(formatter);
     type(desiredDateStr);
@@ -146,12 +137,13 @@ public class BookRobo {
   private void selectFromTime() {
 
     robot.delay(200);
-    robot.mouseMove(450, 616);
+    robot.mouseMove(450, 626);
     robot.delay(100);
-    robot.delay(5000); // TODO intentional manual delay. Remove it
-
     leftClick();
-    robot.mouseMove(452,618);
+
+    robot.delay(1000); // TODO intentional manual delay. Remove it
+
+//    robot.mouseMove(452,618);
     // assuming this program runs at 12 O clock, press down key for 5 times & ENTER.
     type(KeyEvent.VK_DOWN);
     type(KeyEvent.VK_DOWN);
@@ -161,11 +153,12 @@ public class BookRobo {
     type(KeyEvent.VK_ENTER);
 
 
+
   }
 
   private void doSearch() {
     robot.delay(200);
-    robot.mouseMove(360, 680);
+    robot.mouseMove(360, 685);
     robot.delay(500);
     leftClick();
 
@@ -226,7 +219,7 @@ public class BookRobo {
       int code = b;
       // keycode only handles [A-Z] (which is ASCII decimal [65-90])
       if (code > 96 && code < 123) code = code - 32;
-      robot.delay(40);
+      robot.delay(20);
       robot.keyPress(code);
       robot.keyRelease(code);
     }

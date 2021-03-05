@@ -37,7 +37,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>util.CourtBooker</mainClass>
+              <mainClass>util.BookRobo</mainClass>
             </manifest>
           </archive>
         </configuration>
