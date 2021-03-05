@@ -1,3 +1,6 @@
+## Required softwares
+1. JDK (8+)
+2. Maven (https://maven.apache.org/install.html)
 # x, y co-ordinates
 Top left on the monitor is x=0, y = 0. To move the mouse to the right, increase x. To move the 
 mouse pointer down, increase y.
@@ -7,6 +10,7 @@ It is trial and error to move the pointer to the right spot.
 In the `BookRobo.java`, method `bookCourt`, start by commenting out all the methods except
 `openBrowser`. Once the browser is opened successfully, uncomment the next method and adjust as 
 needed.
+
 
 #To run / Trial and errors. 
 * mvn package

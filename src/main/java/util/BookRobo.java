@@ -7,7 +7,10 @@ import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/** Created on Tue, 3/2/21 at 7:22 PM by Genil. */
+/** Created on Tue, 3/2/21 at 7:22 PM by Genil.
+ * Pay attention to release the key events; fail to do do so may hang your machine.
+ *
+ * */
 public class BookRobo {
   Robot robot = new Robot();
 
@@ -58,7 +61,7 @@ public class BookRobo {
   }
 
   private void typeUrl() {
-    type("rush"); // type only partial as the browser is already has the URL in cache
+    type("rush"); // need only partial, browser has the complete URL in cache.
     robot.delay(200);
     type(KeyEvent.VK_RIGHT);
     robot.delay(200);
