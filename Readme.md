@@ -22,6 +22,7 @@ needed.
 * Copy the file. From Terminal `cp resources/org.genil.book.court.plist  ~/Library/LaunchAgents/`
 * `launchctl load -w ~/Library/LaunchAgents/org.genil.book.court.plist`
 * To unload `launchctl unload -w ~/Library/LaunchAgents/org.genil.book.court.plist`
+
 # Test & pilst lint
 * To test immediately `launchctl start ~/Library/LaunchAgents/org.genil.book.court.plist`
 * To make sure the plist file is free of errors, use `plutil -lint ~/Library/LaunchAgents/org.genil.book.court.plist`
